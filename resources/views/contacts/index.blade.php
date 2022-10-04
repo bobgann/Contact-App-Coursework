@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<h1>View All Contacts</h1>
+<h1>All Contacts</h1>
 <div>
     <a href='{{ route('contacts.create') }}'>Add Contact</a><br>
     <?php foreach ($contacts as $id => $contact):?>

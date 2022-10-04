@@ -8,15 +8,12 @@
     <title>Document</title>
 </head>
 <body>
-<h1>All Contacts</h1>
+<h1>View All Contacts</h1>
 <div>
-    <a href='{{ route('contacts.create') }}'>Add Contact</a></br>
+    <a href='{{ route('contacts.create') }}'>Add Contact</a><br>
     <?php foreach ($contacts as $id => $contact):?>
         <p>{{ $contact['name'] }} | {{$contact['phone']}} | <a href='{{ route('contacts.show' , $id) }}'>Show</a></p>
     <?php endforeach ?>
-
 </div>
-
 </body>
 </html>
-

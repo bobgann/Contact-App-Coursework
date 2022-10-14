@@ -15,15 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 function getContacts()
 {
-    return [1 => ['name' => 'Name 1', 'phone' => '1234567890'],
-            2 => ['name' => 'Name 2', 'phone' => '0123456789'],
-            3 => ['name' => 'Name 3', 'phone' => '9012345678']];
+    return [
+        1 => ['name' => 'Name 1', 'phone' => '1234567890'],
+        2 => ['name' => 'Name 2', 'phone' => '2345678901'],
+        3 => ['name' => 'Name 3', 'phone' => '3456789012'],
+    ];
 }
 
-Route::get('/', function () {
-
-    return view('welcome');
-});
+Route::redirect('/','/contacts');
+/* This points home to 'contacts' instead of the index file
+*/
 
 Route::get('/contacts', function () {
     $contacts = getContacts();

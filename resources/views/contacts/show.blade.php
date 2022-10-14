@@ -18,7 +18,7 @@
                                     <div class="form-group row">
                                         <label for="first_name" class="col-md-3 col-form-label">Name</label>
                                         <div class="col-md-9">
-                                            <p class="form-control-plaintext text-muted">{{$contact['name']}}<p>
+                                            <p class="form-control-plaintext text-muted">{{$contact['name']}}</p>
                                         </div>
                                     </div>
 

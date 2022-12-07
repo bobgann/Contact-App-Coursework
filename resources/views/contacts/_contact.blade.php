@@ -6,7 +6,7 @@
     <td>Company one</td>
     <td width="150">
         <a href="{{route('contacts.show', $contact['id']) }}" class="btn btn-sm btn-circle btn-outline-info" title="Show"><i class="fa fa-eye"></i></a>
-        <a href="../../../../../Downloads/edomaru-contact_management_template-130cc506bd5c/form.html"
+        <a href="form.html"
            class="btn btn-sm btn-circle btn-outline-secondary" title="Edit"><i
                 class="fa fa-edit"></i></a>
         <a href="#" class="btn btn-sm btn-circle btn-outline-danger" title="Delete"

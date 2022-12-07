@@ -8,6 +8,7 @@
             <div class="col-lg-6 mx-auto">
                 <p class="lead mb-4">Contact App gives you everything you need to organize your contacts easily.</p>
                 <div class="d-flex justify-content-sm-center">
+                    <a href="{{ route('contacts.index') }}" class="btn btn-dark btn-lg mr-2 ">Go to contacts</a>
                     <a href="#" class="btn btn-primary btn-lg mr-2">Sign up</a>
                     <a href="#" class="btn btn-outline-secondary btn-lg">Sign in</a>
                 </div>

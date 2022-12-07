@@ -1,5 +1,12 @@
 <?php
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ActivityController;
 
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\TaskController;
+
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,39 +20,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-function getContacts()
+
+Route::get('/',[WelcomeController::class,'welcome'])->name('welcome');
+
+Route::controller(ContactController::class)->name('contacts.')->group(function ()
 {
-    return [
-        1 => ['id'=> 1, 'name' => 'Name 1', 'phone' => '1234567890'],
-        2 => ['id'=> 2, 'name' => 'Name 2', 'phone' => '2345678901'],
-        3 => ['id'=> 3, 'name' => 'Name 3', 'phone' => '3456789012'],
-    ];
-}
+    Route::get('/contacts', 'index')->name('index');
+    Route::get('/contacts/create', 'create')->name('create');
+    Route::get('/contacts/{id}', 'show')->name('show');
+});
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('public');
+Route::resource('/companies', \App\Http\Controllers\CompanyController::class);
 
-Route::get('/contacts', function () {
-    $companies = [
-        1 => ['name' => 'Company One', 'contacts' => 3],
-        2 => ['name' => 'Company Two', 'contacts' => 5],
-    ];
-    $contacts = getContacts();
+Route::resources([
+    '/tags' =>TagController::class,
+    '/tasks' => TaskController::class
+]);
 
-    return view('contacts.index', compact('contacts', 'companies'));
-})->name('contacts.index');
+/*Route::resource('/activities', \App\Http\Controllers\ActivityController::class)->names(
+    [
+        'index' => 'activities.all',
+        'show' => 'activities.view'
+    ]
+);*/
+Route::resource('/activities', \App\Http\Controllers\ActivityController::class)->parameters(
+    [
+        'activities' => 'active'
+    ]
+);
 
-Route::get('/contacts/create', function () {
-    return view('contacts.create');
-})->name('contacts.create');
-
-Route::get('/contacts/{id}', function ($id) {
-    $contacts = getContacts();
-    abort_if(!isset($contacts[$id]), 404);
-    $contact = $contacts[$id];
-    return view('contacts.show')->with('contact',$contact);
-})->name('contacts.show');
+Route::resource('/contacts.notes',\App\Http\Controllers\ContactNoteController::class)->shallow();
 
 Route::fallback(function () {
     return "Sorry, this page does not exist";

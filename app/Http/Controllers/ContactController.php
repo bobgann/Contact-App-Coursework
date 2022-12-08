@@ -13,7 +13,6 @@ class ContactController extends Controller
 
     public function index(CompanyRepository $company, Request $request)
     {
-      //  dd($request->sort_by);
 
         $companies = $company->pluck();
 

@@ -31,7 +31,6 @@ class CompanySeeder extends Seeder
             $companies[] = $company;
         }
 
-    DB::table('companies')->truncate();
     DB::table('companies')->insert($companies);
 
     }
